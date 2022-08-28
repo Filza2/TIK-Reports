@@ -1,86 +1,67 @@
-import requests,re,time
+import re
+from time import sleep
 from colorama import Fore
+from requests import get,post
 error,done=0,0
 print("""
-            TikTok          V1.4
+            TikTok          V2
  ____                       _       
 |  _ \ ___ _ __   ___  _ __| |_ ___ 
 | |_) / _ \ '_ \ / _ \| '__| __/ __|
 |  _ <  __/ |_) | (_) | |  | |_\__ /
 |_| \_\___| .__/ \___/|_|   \__|___/
-          |_| <\> @TweakPY - @vv1ck
+          |_| By @TweakPY - @vv1ck
           """)
 print("""
-1-[None]          2-[Plagiarism User]          3-[Plagiarism Me]\n4-[S*x]           5-[Self-Injury]              6-[Annoying]\n7-[Violence]      8-[Under 13]                 9-[Cruelty animaly] \n10-[Cheat&Scam]   11-[Terrorism]               12-[Hate Speech] \n13-[Child Abuse]  14-[Violent Content]         15-[Bad prof pic]\n16-[Cotent]       17-[suicide]                 18-[Plagiarism Famous user]\n19-[Hate Groups]  20-[Promotion Of Criminal Activities]""")
+1-[Self-Injury]\t\t2-[Plagiarism User]\t\t3-[Bad profile picutre]\n4-[Under 13]\t\t5-[else]""")
 fl=int(input('>'))
-if fl==1:report_id=311
-elif fl==2:report_id=3143
-elif fl==3:report_id=3131
-elif fl==4:report_id=308
-elif fl==5:report_id=3052
-elif fl==6:report_id=310
-elif fl==7:report_id=3072
-elif fl==8:report_id=317
-elif fl==9:report_id=304
-elif fl==10:report_id=3024
-elif fl==11:report_id=3011
-elif fl==12:report_id=306
-elif fl==13:report_id=3093
-elif fl==14:report_id=303
-elif fl==15:report_id=3141
-elif fl==16:report_id=399
-elif fl==17:report_id=3051
-elif fl==18:report_id=3073
-elif fl==19:report_id=3013
-elif fl==20:report_id=3021
+if fl==1:report_id=90061
+elif fl==2:report_id=910122
+elif fl==3:report_id=910131
+elif fl==4:report_id=91014
+elif fl==5:report_id=9013
 print("---------------------------------------------------------")
 sessionid=input('[?] Enter Session id : ')
-target=input('[?] Enter Username Target : ')
-sleep=int(input('[?] Enter Sleep [5/10] : '))
-print("*********************************************************")
-head1={
-    'Host': 'www.tiktok.com',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:90.0) Gecko/20100101 Firefox/90.0',
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-    'Accept-Language': 'ar,en-US;q=0.7,en;q=0.3',
-    'Accept-Encoding': 'gzip, deflate',
-    'Upgrade-Insecure-Requests': '1',
-    'Sec-Fetch-Dest': 'document',
-    'Sec-Fetch-Mode': 'navigate',
-    'Sec-Fetch-Site': 'none',
-    'Sec-Fetch-User': '?1',
-    'Te': 'trailers',
-    'Connection': 'close',}
-req=requests.get(f'https://www.tiktok.com/@{target}?lang=en',headers=head1)
-ID=re.findall('''"user":{"id":"(.*?)"''',req.text)[0]
-url='https://www.tiktok.com/node/report/reasons_put?aid=1988&app_name=tiktok_web&device_platform=web_pc&device_id=6965670367281858049&region=SA&priority_region=SA&os=windows&referer=&root_referer=&cookie_enabled=true&screen_width=1920&screen_height=1080&browser_language=ar&browser_platform=Win32&browser_name=Mozilla&browser_version=5.0+(Windows)&browser_online=true&verifyFp=verify_1836fc1bf3f7deccde3944b94542fa17&app_language=ar&timezone_name=Asia%2FRiyadh&is_page_visible=true&focus_state=true&is_fullscreen=false&history_len=4'
+target=input('[?] Enter Target username : ')
+slp=int(input('[?] Enter Sleep [5/10] : '))
+print("---------------------------------------------------------")
+rid=get(f'https://www.tiktok.com/@{target}',headers={
+'Host': 'www.tiktok.com',
+'Cookie': f'ttwid=1%7Cf1d9mI-3uCgb1W1ykT_ZvVGVVmxnggmGJ2TkBooEM1k%7C1661644523%7C102964ade11ca48ec226af6ebf7b674b7282c73affd87c87a209a43e7d50bb68; _abck=22E1C240F157DDF6067B25DFB9B821C1~-1~YAAQ5eRhXv0z76qCAQAAGxR54QgjtVxm3BwmbNsNvMg5PxPBKR5hu9S+ufq/XI5wOxRiMjWefWL8Aj0WO2n30bbHK+G7PSAeO3/plRIMYmhYKpmTExK//Z/7g4c0BGSG2DIjKXSDBMdpTwg+GVHcLPrYwnR+49aX/3ecT3fDPyulaMDzccSV2L64UpKMSWFXOIwidkuV4XvutbWyA687pqpmJx1q+vWyBoUQ3PmfNQBFuxhyVmwBjVRWNH8+TfVE6roGl6KJNw3rJlucYl+s8V5flZiOThkKv14WsTdeVt4aG4RwzUdzWYt7FYIPn7uxAxbp1Z7dRsbOf4B5jym2fwW79Q5ahsytbv7fXno8+1nQnIGwSVEuBfDp7KRWh0ZAX5+GTu9l9M5maQ==~-1~-1~-1; tt_csrf_token=NLIPKjMI-nbSZThQ8j7GKCRM5WbYhfW8b164; bm_sz=29169B1A00AF93E69A99EC87548A5BF1~YAAQ7eRhXmukQNOCAQAAFDVx4RBO2aK1snwE0si7+A9NXsWK4AMqJdKnUloLzLyehNfjAFJHIvADi90SqkRoXIRFcGysiopcTLM2MNbYcqqTyzoObd/M/wkr4j4is8m4Ny7dA943oCm0XG2aB/9tZ04dch04l1FVuY0eR3F6Lk1OBcWkjjTDfG58bx0kf57HCOeIFu6l9uPzcDW5Amc1HysA187WozFvL+zx1T/h2GUYRQmm508tKmlErJKFflYSZIOsG0oACB7WcQBWbWPVXdxZYKFyVIyTUsDlN3FRlvnbPR8=~3488048~4535876; __tea_cache_tokens_1988='+str('{%22_type_%22:%22default%22%2C%22user_unique_id%22:%227122424033622476290%22%2C%22timestamp%22:1661639613182}')+f'; msToken=0apSs85udSMKXsBSoIvwZaYjLeh663Wd_CqCrfpZ8Cxd1xieHCR8zLD3l83jE8_78MP6o-SEIgMNcAw5csP0vVXlKY6X5KG4EsP13PSdD0H6tWjat3Uo49aU7wNYNwCSFC0=; passport_csrf_token=13ece5f7e525190b87f121f3036fc2fa; passport_csrf_token_default=13ece5f7e525190b87f121f3036fc2fa; s_v_web_id=verify_l7chdt9a_7slNGyxb_mBhG_43Ss_8P7z_waU60HRLX7Az; odin_tt=9bc49ecc94c4d9859b8b1deb132bccfde523fe9b38750cc2082c83fe3a77df182990e999add6966efaa3cf1203380c5c6a493d952c75143b15e906167a7b1bad; cmpl_token=AgQQAPO_F-RO0rM0c6QIM104-LZ337Ba_4A0YMULRQ; sid_guard={sessionid}%7C1661640060%7C5184000%7CWed%2C+26-Oct-2022+22%3A41%3A00+GMT; uid_tt=45ac0a8230548d27c192f810cca59123e7516d2cb30dfe412bf79aa3373a7b35; uid_tt_ss=45ac0a8230548d27c192f810cca59123e7516d2cb30dfe412bf79aa3373a7b35; sid_tt={sessionid}; sessionid={sessionid}; sessionid_ss={sessionid}; sid_ucp_v1=1.0.0-KGQ5NTE4NmVjOTNmODFiNGRkOTc2MGMxYTVlOGI2ZWFlMGI2ZDQ2MjAKIAiBiIaAuKCnhWMQ_LqqmAYYswsgDDCuuqqYBjgEQOoHEAMaBm1hbGl2YSIgM2E4OWZjMDVmZmE5ZWIwMDE0NTU3ODM4ZTcwODE4ZTI; ssid_ucp_v1=1.0.0-KGQ5NTE4NmVjOTNmODFiNGRkOTc2MGMxYTVlOGI2ZWFlMGI2ZDQ2MjAKIAiBiIaAuKCnhWMQ_LqqmAYYswsgDDCuuqqYBjgEQOoHEAMaBm1hbGl2YSIgM2E4OWZjMDVmZmE5ZWIwMDE0NTU3ODM4ZTcwODE4ZTI; store-idc=alisg; store-country-code=sa; store-country-code-src=uid; tt-target-idc=alisg; passport_fe_beating_status=false; csrf_session_id=5d701bf19a877a2a4e1e3fa86f69af93; ak_bmsc=C447CEB3E0F85AFF614297D4481D403B~000000000000000000000000000000~YAAQ1O9hXklHBKuCAQAAF9Xf4RCNy5vrA6SlAzpy2T0io3QrPirE5nudeK5vLX/pmPsax5vf7ZNnFZ/cMgSoXlLDwIPoaj6LxFy+XXCc0wzrGjMG7n8Bx4ipNxrEFdsUoabIiNJO/EtgGAubERbYUSpjTShxLfndK4HjW3kmaeqrDol8DZ48n67TEFnHV5M9Hr8JXVwgMTrPBqPf9SReyq64j10WH5SonnHe3V+MEjWMChNhMO2uq8Hsle1UtGufVGI8Oze0eZ9cDKcsONFaly0XiwpqKkJ/vO8GoYY4dRbmomL0HyYEWpRUJQOUZp54JJetEnd/Qzo934v4XrAS1qd981DPeZH7Q7mC6zxXc6T6pAV8BD9EP7VYnHaYPd3ZQRbnELjvnY6wqA==; bm_sv=B8544CD5731378CBBE17F21AF892401D~YAAQ1u9hXkabypOCAQAAMm714RCX9cWClFBUzrQ9yamVsmMgw5PQKjFyo4MDb4AodaRlQzTI5r+OytdbZ/KlCOWqa4kK42qkhONCmz+QBFm9NLsNGYufflu6l+QexbTjHItkqSoLvfJRn73k41WjiPgeypTWJq0UitF9eRzj06xaRW286Gcm7N1gi6Q357Spmbj4euRQzM1JNA4l177RatieAEjYTLxOZ/liYRDxV+Yv2Wiv3qXS3SChxID73Vqd~1; msToken=0apSs85udSMKXsBSoIvwZaYjLeh663Wd_CqCrfpZ8Cxd1xieHCR8zLD3l83jE8_78MP6o-SEIgMNcAw5csP0vVXlKY6X5KG4EsP13PSdD0H6tWjat3Uo49aU7wNYNwCSFC0=',
+'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0',
+'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+'Accept-Language': 'ar,en-US;q=0.7,en;q=0.3',
+'Accept-Encoding': 'gzip, deflate',
+'Upgrade-Insecure-Requests': '1',
+'Sec-Fetch-Dest': 'document',
+'Sec-Fetch-Mode': 'navigate',
+'Sec-Fetch-Site': 'none',
+'Sec-Fetch-User': '?1',
+'Te': 'trailers'})
+ID=str(re.findall('"authorId":"(.*?)",',rid.text)[0]).split(',')[0];usrid=str(re.findall('"uid":"(.*?)",',rid.text)[0])
+url=f'https://www.tiktok.com/aweme/v1/aweme/feedback/?aid=1988&app_language=en&app_name=tiktok_web&browser_language=en&browser_name=Mozilla&browser_online=true&browser_platform=Linux%20x86_64&browser_version=5.0%20%28X11%29&channel=tiktok_web&cookie_enabled=true&current_region=SA&device_id=7122424033622476290&device_platform=web_pc&focus_state=true&from_page=user&history_len=9&is_fullscreen=false&is_page_visible=true&lang=ar&nickname=%D9%88%D9%83%D8%A7%D9%84%D8%A9%20%D8%B1%D9%88%D8%AD%20%D8%A7%D9%84%D8%B3%D9%81%D8%B1&object_id={ID}&os=linux&owner_id={ID}&priority_region=SA&reason={report_id}&referer=&region=SA&report_type=user&reporter_id={usrid}&root_referer=https%3A%2F%2Fwww.google.com%2F&screen_height=768&screen_width=1366&secUid=MS4wLjABAAAAjP4NJvV_yOYEMuNb4_Yjglfoy-EpDzHP88O5ARl85TM7PSU3WVWrK7xF3DHkekdi&target={ID}&tz_name=Asia%2FRiyadh&verifyFp=verify_l7chdt9a_7slNGyxb_mBhG_43Ss_8P7z_waU60HRLX7Az&webcast_language=ar&msToken=6Nus-3bKkLfqDRGOCLeUuVS0xzFGHfSsE7_AJzAE3WuStqC57DfGFsFdjIUCikUlV5KKVe0YFe7es_XDxbdB9iDb7hOnkrHjDATvY_Ie4CqyWQ7CByDKTUddTZhe4Ma7yWY=&X-Bogus=DFSzsIjubTsANSjSSBGe-GybrU2D&_signature=_02B4Z6wo0000199b9lQAAIDC3b9j.iAhcQ.fWvrAAJTl79'
 head={
-    'Cookie': f'tt_webid_v2=6965670367281858049; tt_webid=6965670367281858049; MONITOR_WEB_ID=6965670367281858049; _abck=DF7A347900A8D8FED81AFD5EE12008C7~-1~YAAQfDNWsm1IkCR6AQAAlkm1TAYdeigFmAycOmOWxft0YbRTSKOs7NaHScrsWmMKrgF0Q8MygS9PJYYIeXUipV02ajZtZQ60Qml5yYXInMgf/hmag4ZPfgVu5yWMJ/Y9kay1hOhykc0F5lr1aLuXGuw5hgipQF2Bbta01dwzFeNJ6lEDj8Qt6y1ycvgufkscePLNT1qAAcWYM6WnkuVrEKyIH1ueJFeN97XILjwXozkGhtQB22TwyrTs6qHeuI4AIXAOX4AR3mmLuIijdOm26JV7E+oseILjYmxVvs+bVa9t7dBnTLHv86SrtHIuse6pFR8ho8h4GZioLIGQIszbaVRuZYag0YS8gYQQXQ9rV4gHzl/JLiVUm13V22huRH3xDsLCHz+QCGa2zF8=~-1~-1~-1; ttwid=1%7CGgSBNxhEX3SRZ-8gRwj6trJuRqBn9FTPhb-bLV09ikY%7C1624784631%7Cf683a26c37bf889d5659b8b39f844ca3e5e8ef5d4068a1fd780b35d7ead43a5e; passport_csrf_token=f04fc476081a3d063b607f520e64780c; passport_csrf_token_default=f04fc476081a3d063b607f520e64780c; store-idc=alisg; store-country-code=kw; tt_csrf_token=9ABBszZbHK-ybQ4EmUNmO88d; R6kq3TV7=ANIltUx6AQAA0iR_0DT4isYyFe0wIvLcwlR2DLcu2HoxH_xr2S0UHDnko0X2|1|0|eb909f1c8b6476808c1eef972d934138938d3ff6; bm_sz=370278FCD4D299B700A745DEFAAB4B0D~YAAQfDNWsmxIkCR6AQAAlkm1TAw2bpWuOWe2G6NQNmzScG/m/xH6+Bem8m78w2/xA1Ha2lKE6MdNZ07JVFPoTVvp8FWL2M8G9QgMB02MBRYvrdTc2kD7ZUncdEr392PhTdcf6xJSYchBqThi7Bf/AYjoDGAEvd8b0LydfFMR4EUTIjS74FL0EOdqS8iz9UKW; ak_bmsc=B9040DAC3320D28FDD67A48B46D6575F~000000000000000000000000000000~YAAQfDNWsm5IkCR6AQAAlkm1TAy1aLYODh/mLGC2V6LsEt2XdGdRrZ1OjPijcPWKx5OQ76nFom4AOV76WA4wgozpx6RLYGtKMeuHKDvEe2K0MPj0XOxya3Ncidl3fWQH7st+H01osdxOq6hmZwppADsEaXXc6hca3gvnQIJGfoZI//q8Bu2eOIlpSUlPvESJu0uNEUk+KKrKHn/TlnhXGxyzrkxlFfP7CaL5FwddZlr7RFvevMCiymnHeOVMZaQbigbTb40hWSDiNjTBBb6MYEuqstefPomDVHa7gBUSw1e86/FJ7J8/GDfrH6v97vNyC/zCnho5zL6gl5Iyc1QHCp1nNdWrSzQ2pXHUwMNVUmizdgxM5B0aWHbTMcUMaKmndIyT5S2C8uwZ; csrf_session_id=df090d1141b540129aae2ff9154974e3; csrf_session_id=df090d1141b540129aae2ff9154974e3; bm_sv=5569F3C837EAA3EC3B3B9811A5D462D9~4u+GwfJaQ8rC17D45IxIXyOnJnYE1viTfbOgdfs3k0bp9EYRmgE8eFx928/JAVuP7MV2NDAAXHxkuORBxRVpAwI/dwnqOSrvCkLsimQ061YJb5gHtNIH3QMbwL+yTR9Q91H8lNAI2xKb/uUXKwXAbZO8vcqLAbKetV6VBxEwDFg=; s_v_web_id=verify_1836fc1bf3f7deccde3944b94542fa17; cmpl_token=AgQQAPOvF-RMpbCWRisot104-sqReLfT_4M0YP6syw; sid_guard={sessionid}%7C1624784625%7C5184000%7CThu%2C+26-Aug-2021+09%3A03%3A45+GMT; uid_tt=560c663051ee8ff8a3ff0068cf8eb4b98b29b305eedc84c15ca18d6869be8951; uid_tt_ss=560c663051ee8ff8a3ff0068cf8eb4b98b29b305eedc84c15ca18d6869be8951; sid_tt={sessionid}; sessionid={sessionid}; sessionid_ss={sessionid}; odin_tt=89e0ee29e1136ac2744696c6d6549510fb534ad7f9c0e511a6c6581a6b025c04f91814d3daecd456516c2ed276d5453767ceeda259ac65d2f139014dc96bdf438d81ad34e414f090f01f3d0b0d4d6ebc; passport_fe_beating_status=true',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0',
-    'Accept': 'application/json, text/plain, */*',
-    'Accept-Language': 'ar,en-US;q=0.7,en;q=0.3',
-    'Accept-Encoding': 'gzip, deflate',
-    'Content-Type': 'application/json',
-    'Content-Length': '102',
-    'Tt-Csrf-Token': '9ABBszZbHK-ybQ4EmUNmO88d',
-    'X-Secsdk-Csrf-Token': '0001000000014ea713b3201bdb67f32cded9fd338566179a21daa4321f512da8c2c7b50bcdba168c6503d189e850',
-    'Origin': 'https://www.tiktok.com',
-    'Referer': f'https://www.tiktok.com/@{target}?lang=ar',
-    'Te': 'trailers',
-    'Connection': 'close'}
-data={"reason":f'{int(report_id)}',"object_id":ID,"owner_id":ID,"report_type":"user"}
-print(str(data))
+'Host': 'www.tiktok.com',
+'Cookie': f'ttwid=1%7Cf1d9mI-3uCgb1W1ykT_ZvVGVVmxnggmGJ2TkBooEM1k%7C1661644523%7C102964ade11ca48ec226af6ebf7b674b7282c73affd87c87a209a43e7d50bb68; _abck=22E1C240F157DDF6067B25DFB9B821C1~-1~YAAQ5eRhXv0z76qCAQAAGxR54QgjtVxm3BwmbNsNvMg5PxPBKR5hu9S+ufq/XI5wOxRiMjWefWL8Aj0WO2n30bbHK+G7PSAeO3/plRIMYmhYKpmTExK//Z/7g4c0BGSG2DIjKXSDBMdpTwg+GVHcLPrYwnR+49aX/3ecT3fDPyulaMDzccSV2L64UpKMSWFXOIwidkuV4XvutbWyA687pqpmJx1q+vWyBoUQ3PmfNQBFuxhyVmwBjVRWNH8+TfVE6roGl6KJNw3rJlucYl+s8V5flZiOThkKv14WsTdeVt4aG4RwzUdzWYt7FYIPn7uxAxbp1Z7dRsbOf4B5jym2fwW79Q5ahsytbv7fXno8+1nQnIGwSVEuBfDp7KRWh0ZAX5+GTu9l9M5maQ==~-1~-1~-1; tt_csrf_token=NLIPKjMI-nbSZThQ8j7GKCRM5WbYhfW8b164; bm_sz=29169B1A00AF93E69A99EC87548A5BF1~YAAQ7eRhXmukQNOCAQAAFDVx4RBO2aK1snwE0si7+A9NXsWK4AMqJdKnUloLzLyehNfjAFJHIvADi90SqkRoXIRFcGysiopcTLM2MNbYcqqTyzoObd/M/wkr4j4is8m4Ny7dA943oCm0XG2aB/9tZ04dch04l1FVuY0eR3F6Lk1OBcWkjjTDfG58bx0kf57HCOeIFu6l9uPzcDW5Amc1HysA187WozFvL+zx1T/h2GUYRQmm508tKmlErJKFflYSZIOsG0oACB7WcQBWbWPVXdxZYKFyVIyTUsDlN3FRlvnbPR8=~3488048~4535876; __tea_cache_tokens_1988='+str('{%22_type_%22:%22default%22%2C%22user_unique_id%22:%227122424033622476290%22%2C%22timestamp%22:1661639613182}')+f'; msToken=6Nus-3bKkLfqDRGOCLeUuVS0xzFGHfSsE7_AJzAE3WuStqC57DfGFsFdjIUCikUlV5KKVe0YFe7es_XDxbdB9iDb7hOnkrHjDATvY_Ie4CqyWQ7CByDKTUddTZhe4Ma7yWY=; passport_csrf_token=13ece5f7e525190b87f121f3036fc2fa; passport_csrf_token_default=13ece5f7e525190b87f121f3036fc2fa; s_v_web_id=verify_l7chdt9a_7slNGyxb_mBhG_43Ss_8P7z_waU60HRLX7Az; odin_tt=57653a1c6306cd66ce3c4745f22992c803f4be0259edcac4a826b983cbf26a3f472938d0088cf44b8c8756427e0bd069cb26cd8ff3587e9974b2c242f15fcab690755fdbfc5a09131bb19b6b2d0b310b; cmpl_token=AgQQAPO_F-RO0rM0c6QIM104-LZ337Ba_4A0YMULRQ; sid_guard={sessionid}%7C1661640060%7C5184000%7CWed%2C+26-Oct-2022+22%3A41%3A00+GMT; uid_tt=45ac0a8230548d27c192f810cca59123e7516d2cb30dfe412bf79aa3373a7b35; uid_tt_ss=45ac0a8230548d27c192f810cca59123e7516d2cb30dfe412bf79aa3373a7b35; sid_tt={sessionid}; sessionid={sessionid}; sessionid_ss={sessionid}; sid_ucp_v1=1.0.0-KGQ5NTE4NmVjOTNmODFiNGRkOTc2MGMxYTVlOGI2ZWFlMGI2ZDQ2MjAKIAiBiIaAuKCnhWMQ_LqqmAYYswsgDDCuuqqYBjgEQOoHEAMaBm1hbGl2YSIgM2E4OWZjMDVmZmE5ZWIwMDE0NTU3ODM4ZTcwODE4ZTI; ssid_ucp_v1=1.0.0-KGQ5NTE4NmVjOTNmODFiNGRkOTc2MGMxYTVlOGI2ZWFlMGI2ZDQ2MjAKIAiBiIaAuKCnhWMQ_LqqmAYYswsgDDCuuqqYBjgEQOoHEAMaBm1hbGl2YSIgM2E4OWZjMDVmZmE5ZWIwMDE0NTU3ODM4ZTcwODE4ZTI; store-idc=alisg; store-country-code=sa; store-country-code-src=uid; tt-target-idc=alisg; passport_fe_beating_status=true; csrf_session_id=5d701bf19a877a2a4e1e3fa86f69af93; ak_bmsc=C447CEB3E0F85AFF614297D4481D403B~000000000000000000000000000000~YAAQ1O9hXklHBKuCAQAAF9Xf4RCNy5vrA6SlAzpy2T0io3QrPirE5nudeK5vLX/pmPsax5vf7ZNnFZ/cMgSoXlLDwIPoaj6LxFy+XXCc0wzrGjMG7n8Bx4ipNxrEFdsUoabIiNJO/EtgGAubERbYUSpjTShxLfndK4HjW3kmaeqrDol8DZ48n67TEFnHV5M9Hr8JXVwgMTrPBqPf9SReyq64j10WH5SonnHe3V+MEjWMChNhMO2uq8Hsle1UtGufVGI8Oze0eZ9cDKcsONFaly0XiwpqKkJ/vO8GoYY4dRbmomL0HyYEWpRUJQOUZp54JJetEnd/Qzo934v4XrAS1qd981DPeZH7Q7mC6zxXc6T6pAV8BD9EP7VYnHaYPd3ZQRbnELjvnY6wqA==; bm_sv=B8544CD5731378CBBE17F21AF892401D~YAAQT+9hXst0FtSCAQAAtibr4RDwi6umltC0Q/4nxqN+W2+H8jEqJiAM1UKq/WFRxvIWhD1cun7u+tsaokZUIFUtQ+BfD39WvB1UibsoZGFoWVjTKj4bK5EAwMu1QlH/12/pDUlhGiayqklz3tR7Z50CdBuzGqveSZ1+0zZm6huOffoPqGSwG9wceTQDSeLStHbo0q9U1uJ6k/nfDVNxu8euwA1o0E54chCfc6aWRX8Jo8WT4vwMtFAtkIsDIiHa~1; msToken=qGBWaC6AABYwCGW40MpO_ULzu3p1frMHAB2HusJhNaTTXidh2uPt3izjt9hj8Dwpa14bb3aqUr52_h3K_czyr7KjZhwsQIjRmMSPBAjTu6qfjDLCes5IQh7vysV_Z-FIjuw=',
+'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0',
+'Accept': '*/*',
+'Accept-Language': 'ar,en-US;q=0.7,en;q=0.3',
+'Accept-Encoding': 'gzip, deflate',
+'Referer': f'https://www.tiktok.com/@{target}',
+'Sec-Fetch-Dest': 'empty',
+'Sec-Fetch-Mode': 'cors',
+'Sec-Fetch-Site': 'same-origin',
+'Te': 'trailers'}
+print('\n')
 while True:
-    time.sleep(sleep)
-    req=requests.post(url,json=data,headers=head)
-    if '"statusCode":0,"errMsg":"نشكرك على ملاحظاتك"' in req.text:
-        print(f'\r[{Fore.MAGENTA}${Fore.RESET}] {Fore.GREEN}Done Report [{done}]{Fore.RESET} | {Fore.RED}Error Report [{error}]{Fore.RESET}')
-        done+=1
-    elif 'نأسف، الخادم غير متوفر حاليًا. يرجى المحاولة مرة أخرى' in req.text:
-        print(f'\r[{Fore.MAGENTA}${Fore.RESET}] {Fore.GREEN}Done Report [{done}]{Fore.RESET} | {Fore.RED}Error Report [{error}]{Fore.RESET}')
-        error+=1
-    else:
-        print(f'\n\t[{Fore.RED}!] Error{Fore.RESET} sending report',req.text)
-        exit("[!] Go to TweakPY on telegram and tell filza this error to make the update of tool batter")
-
-
+	sleep(slp)
+	req=post(url,headers=head)
+	if 'Thanks for your feedback' in req.text:
+		print(f'\r[{Fore.MAGENTA}${Fore.RESET}] {Fore.GREEN}Done Report [{done}]{Fore.RESET} | {Fore.RED}Error Report [{error}]{Fore.RESET}',end=' ')
+		done+=1
+	elif 'Server is currently unavailable. Please try again later.' in req.text:
+		print(f'\r[{Fore.MAGENTA}${Fore.RESET}] {Fore.GREEN}Done Report [{done}]{Fore.RESET} | {Fore.RED}Error Report [{error}]{Fore.RESET}',end=' ')
+		error+=1
+	else:
+		print(f'\n\t[{Fore.RED}!{Fore.RESET}] {Fore.RED}Error{Fore.RESET} sending report',req.text)
+		exit("[!] Go to @TweakPY on Telegram and Tell filza this error to make the update of tool batter")
