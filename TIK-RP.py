@@ -1,7 +1,5 @@
-import re
-from time import sleep
-from colorama import Fore
-from requests import get,post
+try:import re;from time import sleep;from colorama import Fore;from requests import get,post
+except Exception as e:print(f'[!] Download The Missing Module ! , {e}');exit()
 error,done=0,0
 print("""
             TikTok          V2
